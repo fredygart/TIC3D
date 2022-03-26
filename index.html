@@ -79,28 +79,7 @@ const createScene = async function() {
     const wLines1 = scene.getNodeByName("wLines1");
     anmReset.stop();
     wLines1.isVisible = true;
-	//wLines1.morphTargetManager.getTarget(0).influence = 0;
-	//var newMorph = wLines1.morphTargetManager.getTarget(7).clone();
-	//wLines1.morphTargetManager.addTarget(newMorph,"asd");
 
-    //var manager = new BABYLON.MorphTargetManager();
-    //wLines1.morphTargetManager = manager;
-    //var target = BABYLON.MorphTarget.FromMesh(wLines1, "wLine8", 0.25);
-	//wLines1.morphTargetManager.addTarget("7000");
-	//wLines1.morphTargetManager.getTarget(0).influence = 0;
-	
-	//var target0 = BABYLON.MorphTarget.FromMesh(wLines1, "sphere22", 0.25);
-    //wLines1.morphTargetManager.addTarget(target0);
-    //target0.influence = 0.8;
-	//wLines1.morphTargetManager.addTarget(BABYLON.MorphTarget.FromMesh(wLines1, "sphere22", 0));
-	//var wLinesB = wLines1.clone("asdasd");
-	//wLinesB.updateMeshPositions(scrambleUp);
-	//var target0 = BABYLON.MorphTarget.FromMesh(wLinesB, "sphere22", 0.25);
-    //wLines1.morphTargetManager.addTarget(target0);
-    //target0.influence = 0.8;
-
-
-	
     scene.getMaterialByName("robotArmColor2").metallic = 1;
     scene.getMaterialByName("robotArmColor1").metallic = 1;
 
@@ -228,15 +207,11 @@ const createScene = async function() {
 
     function animateLine() {
       scene.getNodeByName("resetButton1").isPickable = false;
-	  //wLines1.morphTargetManager.getTarget(0).influence = 1;
-      //wLines1.isVisible = true;
-      //wLines1.morphTargetManager.getTarget(7).influence = 0;
-      //scene.getAnimationGroupByName("wLine8").goToFrame(0);
+
       for (var l = 0; l < wCombs.length; l++) {
         if (tableCellsArr[wCombs[l][0]] == tableCellsArr[wCombs[l][1]] && tableCellsArr[wCombs[l][1]] == tableCellsArr[wCombs[l][2]]) {
           (tableCellsArr[wCombs[l][0]] == 1) ? scoreX++ : scoreO++;
           wLines1.isVisible = true;
-          //scene.getAnimationGroupByName("wLine"+(l+1)).start(false, 1.0, 0, 2.88, false);
           scene.getAnimationGroupByName("wLine" + (l + 1)).start();
           break;
         }
@@ -380,9 +355,6 @@ const createScene = async function() {
       scoreTx0DT.drawText(scoreO, scoreO < 10 ? 100 : scoreO > 99 ? 10 : 50, 110, fontX, "white", "transparent", true, true);
     }
 
-        //scene.debugLayer.show({embedMode: true});
-        //scene.debugLayer.select(wLines1);
-	//scene.debugLayer.show();
 
   });
 
@@ -432,7 +404,7 @@ initFunction().then(() => {
   });
 });
 
-// Resize
+
 window.addEventListener("resize", function() {
   engine.resize();
 });
